@@ -15,11 +15,21 @@ export function loadHandModels(): Promise<GR> {
   recognizerPromise = (async () => {
     const vision = await import("@mediapipe/tasks-vision");
     const fileset = await vision.FilesetResolver.forVisionTasks(WASM_BASE);
-    return vision.GestureRecognizer.createFromOptions(fileset, {
-      baseOptions: { modelAssetPath: MODEL_URL, delegate: "GPU" },
-      runningMode: "VIDEO",
-      numHands: 2,
-    });
+    // Prefer GPU delegate but fall back to CPU if unavailable or errors occur.
+    try {
+      return vision.GestureRecognizer.createFromOptions(fileset, {
+        baseOptions: { modelAssetPath: MODEL_URL, delegate: "GPU" },
+        runningMode: "VIDEO",
+        numHands: 2,
+      });
+    } catch (err) {
+      console.warn("GestureRecognizer GPU delegate failed, falling back to CPU:", err);
+      return vision.GestureRecognizer.createFromOptions(fileset, {
+        baseOptions: { modelAssetPath: MODEL_URL, delegate: "CPU" },
+        runningMode: "VIDEO",
+        numHands: 2,
+      });
+    }
   })();
   return recognizerPromise;
 }

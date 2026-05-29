@@ -98,30 +98,7 @@ function GesturesPage() {
             )}
           </div>
 
-          <div className="rounded-2xl glass p-5">
-            <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3">
-              Vocabulary
-            </div>
-            <div className="grid grid-cols-3 gap-2">
-              {GESTURES.filter((g) => g !== "none").map((g) => {
-                const meta = GESTURE_META[g];
-                const active = top?.gesture === g;
-                return (
-                  <div
-                    key={g}
-                    className={`rounded-lg border px-2 py-3 text-center text-xs transition-all ${
-                      active
-                        ? "border-neon-cyan/60 bg-primary/10"
-                        : "border-border/40 bg-white/[0.02]"
-                    }`}
-                  >
-                    <div className="text-2xl">{meta.emoji}</div>
-                    <div className="mt-1 text-[10px] uppercase tracking-wider">{meta.label}</div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+          {/* Vocabulary block removed */}
         </div>
       </div>
 
