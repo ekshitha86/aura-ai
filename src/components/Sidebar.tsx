@@ -7,7 +7,7 @@ const NAV = [
   { to: "/live", label: "Live Monitor", icon: Activity },
   { to: "/upload", label: "Image Analysis", icon: ImageIcon },
   { to: "/video", label: "Video Analysis", icon: Video },
-  { to: "/gestures", label: "Gestures Learning", icon: Hand },
+  { to: "/gestures", label: "Gestures ", icon: Hand },
   { to: "/sign", label: "Sign Translator", icon: Languages },
   { to: "/insights", label: "Insights", icon: Brain },
   { to: "/history", label: "History", icon: History },
