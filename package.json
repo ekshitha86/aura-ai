@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "vercel-build": "npm run build && npx nitro build --preset vercel"
+    "vercel-build": "npm run build && node scripts/prepare-vercel.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
