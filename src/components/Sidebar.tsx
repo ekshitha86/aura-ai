@@ -147,11 +147,23 @@ export function Sidebar() {
       {/* Mobile Hamburger */}
       <button
         onClick={() => setMobileOpen(true)}
-        className="fixed top-4 left-4 z-50 md:hidden rounded-lg glass p-2"
-      >
-        <Menu className="h-5 w-5" />
+        className="
+    fixed top-4 left-4 z-[60]
+    md:hidden
+    flex items-center gap-2
+    rounded-xl
+    border border-cyan-400/40
+    bg-black/70
+    backdrop-blur-xl
+    px-3 py-2
+    shadow-lg shadow-cyan-500/20
+    transition-all
+    hover:scale-105
+  "
+>
+        <Menu className="h-5 w-5 text-cyan-400" />
+        <span className="text-sm font-medium text-white">Menu</span>
       </button>
-
       {/* Mobile Sidebar */}
       {mobileOpen && (
         <>
@@ -160,19 +172,18 @@ export function Sidebar() {
             onClick={() => setMobileOpen(false)}
           />
 
-          <aside className="fixed left-0 top-0 z-50 flex h-full w-64 flex-col gap-6 border-r border-border/60 bg-sidebar/95 backdrop-blur-xl p-5">
+          <aside className="fixed left-0 top-0 z-[70] flex h-full w-72 flex-col gap-6 border-r border-cyan-500/20 bg-sidebar/95 backdrop-blur-xl p-5 shadow-2xl shadow-cyan-500/20">
             <button
               onClick={() => setMobileOpen(false)}
-              className="self-end"
+              className="self-end rounded-lg p-2 hover:bg-white/10 transition-colors"
             >
-              <X className="h-5 w-5" />
+              <X className="h-5 w-5 text-cyan-400" />
             </button>
 
             <SidebarContent />
           </aside>
         </>
       )}
-
       {/* Desktop Sidebar */}
       <aside className="hidden md:flex w-64 shrink-0 flex-col gap-6 border-r border-border/60 bg-sidebar/60 backdrop-blur-xl p-5">
         <SidebarContent />
